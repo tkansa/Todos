@@ -1,0 +1,31 @@
+<div>
+    <label>Search Todos:
+        <input #searchTerm>
+    </label>
+    <button (click)="filter(searchTerm.value)">Search</button>
+    <button (click)="clear()">Clear filter</button>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Todo:</th>
+            <th scope="col">Completed:</th>
+            <th scope="col">Delete Task:</th>
+        </tr>        
+    </thead>
+    <tbody>
+        <tr *ngFor="let t of todos">
+            <td>{{t.todoItem}}</td>
+            <td><button type="button" class="{{t.completed? 'green':'red'}}" (click)="toggleCompleted(t.todoItem)">&nbsp;</button></td>
+            <td><button class="delete" (click)="delete(t.todoItem)">x</button></td>
+        </tr>
+    </tbody>
+</table>
+<div>
+    <label>
+        New Todo:
+        <input #newTodo />
+    </label>
+    <button (click)="add(newTodo.value); newTodo.value=''">Add</button>
+</div>
+
